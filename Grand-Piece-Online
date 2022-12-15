@@ -30,7 +30,7 @@ for i, v in pairs(WhiteList) do
                 FileName = "Onl Key",
                 SaveKey = true,
                 GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get
-                Key = "⁛"
+                Key = "₠"
             }
         })
         
