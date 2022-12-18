@@ -2,7 +2,7 @@ local Player = game.Players.LocalPlayer
 
 
 
-local WhiteList = {12339967, 12515414, 3567368842}
+local WhiteList = {12339967, 12515414, 1397107099}
 
 for i, v in pairs(WhiteList) do
     if Player.UserId == v then
