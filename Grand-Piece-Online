@@ -1,10 +1,10 @@
 local Player = game.Players.LocalPlayer
 
--- if game:GetService("ReplicatedStorage").getPlayerPosition ~= nil then
---     game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
--- end
+ if game:GetService("ReplicatedStorage").getPlayerPosition ~= nil then
+     game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
+ end
 
-local WhiteList = {12991325, 12435100, 12698822}
+local WhiteList = {12339967, 12515414, 12698822}
 
 for i, v in pairs(WhiteList) do
     if Player.UserId == v then
@@ -119,7 +119,7 @@ for i, v in pairs(WhiteList) do
                     if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.LeftShift then
                         _G.Running = true
                             while wait() and _G.Running == true do
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 1
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 2.25
             end
                     end
             end)
