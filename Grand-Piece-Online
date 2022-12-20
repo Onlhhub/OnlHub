@@ -11,6 +11,8 @@ for i, v in pairs(WhiteList) do
         local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
     
         loadstring(game:HttpGet("https://raw.githubusercontent.com/OzNL/OP-Studios/main/sdss"))()
+	
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))()
     
         local Window = Rayfield:CreateWindow({
             Name = "****",
@@ -2889,7 +2891,7 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         })
 
 		local FlyButton = PlayerTab:CreateButton({
-            Name = "Fly (G)",
+            Name = "Fly (Press ; And Type : Fly And Fly Speed Is 5 or 3 or 2)",
             Callback = function()
                 fly()
             end,
