@@ -1,6 +1,8 @@
 local Player = game.Players.LocalPlayer
 
-
+if game:GetService("ReplicatedStorage").getPlayerPosition then
+   game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
+end
 
 local WhiteList = {12967520, 12013789, 3979236890}
 
