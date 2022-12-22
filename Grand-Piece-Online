@@ -4,7 +4,7 @@ if game:GetService("ReplicatedStorage").getPlayerPosition then
    game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
 end
 
-local WhiteList = {12967520, 12013789, 3979236890}
+local WhiteList = {12967520, 1328626317, 3979236890}
 
 for i, v in pairs(WhiteList) do
     if Player.UserId == v then
