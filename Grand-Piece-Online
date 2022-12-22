@@ -1,14 +1,19 @@
 local Player = game.Players.LocalPlayer
 
-if game:GetService("ReplicatedStorage").getPlayerPosition then
-   game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
+if not syn and not PROTOSMASHER_LOADED then
+	Player:Kick("You Need Synapse To Execute This Script")
 end
 
-local WhiteList = {12967520, 1328626317, 3979236890}
+if game:GetService("ReplicatedStorage").getPlayerPosition ~= nil then
+    game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
+end
+
+local WhiteList = {561587065, 1328626317, 3979236890}
 
 for i, v in pairs(WhiteList) do
     if Player.UserId == v then
-        local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
     
         loadstring(game:HttpGet("https://raw.githubusercontent.com/OzNL/OP-Studios/main/sdss"))()
     
@@ -115,11 +120,11 @@ for i, v in pairs(WhiteList) do
         function WalkSpeedBypas1()
 
             local UIS = game:GetService'UserInputService';
-            UIS.InputBegan:connect(function(UserInput)
+            UIS.InputBegan:connect(function(UserInput, gpe)
                     if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.LeftShift then
                         _G.Running = true
                             while wait() and _G.Running == true do
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 2.25
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 1.5
             end
                     end
             end)
@@ -139,7 +144,7 @@ for i, v in pairs(WhiteList) do
                     if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.LeftControl then
                         _G.Speed = true
                             while wait() and _G.Speed == true and _G.NoSpeed == false do
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 2.25
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 1.5
             end
                     end
             end)
@@ -2889,7 +2894,7 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         })
 
 		local FlyButton = PlayerTab:CreateButton({
-            Name = "Fly (Press ; And Type : Fly And Fly Speed Is 5 or 3 or 2)",
+            Name = "Fly (G)",
             Callback = function()
                 fly()
             end,
@@ -2972,5 +2977,5 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         })
 
         local Label = Tab:CreateLabel("Soon Players AutoFarm")
-    end
+	end
 end
