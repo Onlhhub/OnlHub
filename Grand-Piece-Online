@@ -165,13 +165,20 @@ for i, v in pairs(WhiteList) do
         end
         
         function InfinteyJump()
-            local InfiniteJumpEnabled = true
-            game:GetService("UserInputService").JumpRequest:connect(function()
-                if InfiniteJumpEnabled then
-                    wait(.05)
-                    game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
-                end
-            end)
+
+	local uis = game:GetService("UserInputService")
+
+	uis.InputBegan:Connect(function(input, gameProcessedEvent)
+		if gameProcessedEvent then
+					
+		end
+
+		if input.KeyCode == Enum.KeyCode.Space then
+
+		local hum = Player.Character:WaitForChild("Humanoid")
+		hum:ChangeState(Enum.HumanoidStateType.Jumping)
+	      end
+	   end)
         end
         
         function Esp()
