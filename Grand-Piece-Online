@@ -18,9 +18,9 @@ for i, v in pairs(WhiteList) do
         loadstring(game:HttpGet("https://raw.githubusercontent.com/OzNL/OP-Studios/main/sdss"))()
     
         local Window = Rayfield:CreateWindow({
-            Name = "****",
-            LoadingTitle = "****",
-            LoadingSubtitle = "****",
+            Name = "Onl Hub",
+            LoadingTitle = "Onl Hub",
+            LoadingSubtitle = "Onl Hub",
             ConfigurationSaving = {
                 Enabled = true,
                 FolderName = nil, -- Create a custom folder for your hub/game
@@ -36,7 +36,7 @@ for i, v in pairs(WhiteList) do
                 Title = "**** Hub",
                 Subtitle = "Key System",
                 Note = "Join the discord (discord.gg/****)",
-                FileName = "**** Key",
+                FileName = "Onl Hub Key",
                 SaveKey = false,
                 GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get
                 Key = "s"
@@ -65,11 +65,14 @@ for i, v in pairs(WhiteList) do
 
         _G.Speed = false
 
+		_G.Speedy = 1.5
+
         _G.NoSpeed = false
         
         _G.Jump = false
 
         local ShiftLocker = "LeftShift"
+
         -- Funcions
         
         function HitboxSize()
@@ -124,7 +127,7 @@ for i, v in pairs(WhiteList) do
                     if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.LeftShift then
                         _G.Running = true
                             while wait() and _G.Running == true do
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 1.5
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * _G.Speedy
             end
                     end
             end)
@@ -2719,12 +2722,18 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
             end,
         })
 
-        -- local ButtonWalkSpeed = PlayerTab:CreateButton({
-        --     Name = "Flying Speed Bypass Click After You Landed ! (LeftControl For 30)",
-        --     Callback = function()
-        --         FlySpeed()
-        --     end,
-        -- })
+		local SliderSpeedy = PlayerTab:CreateSlider({
+			Name = "Speed",
+			Range = {0.1, 3},
+			Increment = 0.1,
+			Suffix = "Speed",
+			CurrentValue = 0.1,
+			Flag = "Slider1Speedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+				-- The function that takes place when the slider changes
+					_G.Speedy = Value
+			end,
+		})
 
         function ShiftLockS()
             Player.PlayerScripts.PlayerModule.CameraModule.MouseLockController.BoundKeys.Value = "LeftAlt"
