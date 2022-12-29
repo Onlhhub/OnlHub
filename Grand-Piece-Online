@@ -4,14 +4,17 @@ if not syn and not PROTOSMASHER_LOADED then
 	Player:Kick("You Need Synapse To Execute This Script")
 end
 
-if game:GetService("ReplicatedStorage"):FindFirstChild("getPlayerPosition") then
-    game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
-end
+local HWIDTable = loadstring(game:HttpGet("https://pastebin.com/cFTjHAEN"))()
+local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
 
-local WhiteList = {560276363, 2818752071, 3979236890}
+for _h_, v553 in pairs(HWIDTable) do
+    if v553 == HWID then
 
-for i, v in pairs(WhiteList) do
-    if Player.UserId == v then
+        print("Success")
+
+		if game:GetService("ReplicatedStorage"):FindFirstChild("getPlayerPosition") then
+			game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
+		end
 
 		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
     
