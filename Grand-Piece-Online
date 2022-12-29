@@ -5,8 +5,8 @@ if not syn and not PROTOSMASHER_LOADED then
 end
 
 local HWIDTable = {
-"95C59999-36C2-4157-B11C-BDACFFE271EA",
-"581ABAD5-61B5-4177-A63A-2876C7349EFD",
+	"95C59999-36C2-4157-B11C-BDACFFE271EA",
+	"581ABAD5-61B5-4177-A63A-2876C7349EFD",
 }
 
 local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
@@ -22,8 +22,8 @@ for _h_, v553 in pairs(HWIDTable) do
 
 		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
     
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/OzNL/OP-Studios/main/sdss"))()
-    
+        setclipboard(HWID)
+
         local Window = Rayfield:CreateWindow({
             Name = "Onl Hub",
             LoadingTitle = "Onl Hub",
@@ -35,18 +35,18 @@ for _h_, v553 in pairs(HWIDTable) do
             },
                 Discord = {
                     Enabled = true,
-                    Invite = "physics", -- The Discord invite code, do not include discord.gg/
+                    Invite = "TxJS2Hvvws", -- The Discord invite code, do not include discord.gg/
                     RememberJoins = true -- Set this to false to make them join the discord every time they load it up
                 },
-            KeySystem = false, -- Set this to true to use our key system
+            KeySystem = true, -- Set this to true to use our key system
             KeySettings = {
-                Title = "**** Hub",
-                Subtitle = "Key System",
-                Note = "Join the discord (discord.gg/****)",
+                Title = "Onl Hub",
+                Subtitle = "Key System, Please Enter You're Client Id By Pressing Ctrl + V",
+                Note = "Join the discord (discord.gg/TxJS2Hvvws)",
                 FileName = "Onl Hub Key",
                 SaveKey = false,
                 GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get
-                Key = "s"
+                Key = v553
             }
         })
         
@@ -72,11 +72,19 @@ for _h_, v553 in pairs(HWIDTable) do
 
         _G.Speed = false
 
-		_G.Speedy = 1.5
+		_G.Speedy = 0.5
 
         _G.NoSpeed = false
         
         _G.Jump = false
+
+		_G.AutoFarmPlayer = false
+
+		_G.SelectedPlayer = nil
+
+		_G.SelectedPlayerName = ""
+
+		_G.CurrentPlayerDied = false
 
         local ShiftLocker = "LeftShift"
 
@@ -2731,7 +2739,7 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 
 		local SliderSpeedy = PlayerTab:CreateSlider({
 			Name = "Speed",
-			Range = {0.1, 3},
+			Range = {0.1, 5},
 			Increment = 0.1,
 			Suffix = "Speed",
 			CurrentValue = 0.1,
@@ -2948,7 +2956,160 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
             end,
         })
 
+		function SetUsername()
+			local x = game.Players:FindFirstChild(_G.SelectedPlayerName)
 
+			if _G.SelectedPlayer ~= nil and _G.SelectedPlayerName ~= _G.SelectedPlayer.Name then
+				Rayfield:Notify({
+					Title = "System",
+					Content = "This Player Is Already Selected !",
+					Duration = 6.5,
+					Image = 4483362458,
+					Actions = { -- Notification Buttons
+						Ignore = {
+							Name = "Okay!",
+							Callback = function()
+								print("Clicked Up")
+							end
+						},
+					},
+				})
+			end
+
+			if x then
+				_G.SelectedPlayer = x
+
+				_G.SelectedPlayerName = ""
+
+				print(_G.SelectedPlayer.Name)
+			else
+				_G.SelectedPlayer = nil
+
+				Rayfield:Notify({
+					Title = "System",
+					Content = "We Can't Find Player, Please Try Again",
+					Duration = 6.5,
+					Image = 4483362458,
+					Actions = { -- Notification Buttons
+						Ignore = {
+							Name = "Okay!",
+							Callback = function()
+								print("Clicked Up")
+							end
+						},
+					},
+				})
+			end
+		end
+
+		function AutoEatPlayer()
+			local ff = nil
+
+			if _G.SelectedPlayer.Character.HumanoidRootPart then
+				ff = _G.SelectedPlayer.Character.HumanoidRootPart
+			end
+
+			local TeleportTable = {
+				location = ff.Position
+			}
+			
+			local ts = game:GetService("TweenService")
+			
+			local Tween = TweenInfo.new(0.25, Enum.EasingStyle.Linear)
+			
+			function Teleport(v1)
+				if Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
+					while _G.AutoFarmPlayer == true do
+
+						if _G.SelectedPlayer == nil or _G.AutoFarmPlayer == false then
+							_G.SelectedPlayerName = ""
+							_G.CurrentPlayerDied = false
+							break
+						end
+
+						if _G.CurrentPlayerDied == true or _G.AutoFarmPlayer == false then
+							_G.SelectedPlayer = nil
+							_G.SelectedPlayerName = ""
+							_G.CurrentPlayerDied = false
+							break
+						end
+
+						wait()
+
+						if _G.SelectedPlayer ~= nil and _G.CurrentPlayerDied == false then
+
+							if _G.SelectedPlayer == nil then
+								_G.SelectedPlayerName = ""
+								_G.CurrentPlayerDied = false
+								
+		
+								Rayfield:Notify({
+									Title = "System",
+									Content = "Player is nil or player has been left the game .",
+									Duration = 6.5,
+									Image = 4483362458,
+									Actions = { -- Notification Buttons
+										Ignore = {
+											Name = "Okay!",
+											Callback = function()
+												print("Clicked Up")
+											end
+										},
+									},
+								})
+								
+								break
+							end
+						end
+
+						local cf = CFrame.new(v1) * CFrame.new(0,0,-3)
+						local tg = nil
+						
+						if _G.AutoFarmPlayer == true or _G.SelectedPlayer ~= nil then
+							tg = ts:Create(Player.Character.HumanoidRootPart, Tween, {CFrame = cf})
+							tg:Play()
+						elseif _G.AutoFarmPlayer == false or _G.SelectedPlayer == nil then
+							tg = ts:Create(Player.Character.HumanoidRootPart, Tween, {CFrame = Player.Character.HumanoidRootPart.CFrame})
+							tg:Play()
+							tg:Pause()
+							tg = nil
+							_G.CurrentPlayerDied = false
+							break
+						end
+
+						if _G.SelectedPlayer.Character ~= nil and _G.SelectedPlayer.Character.Humanoid.Health == 0 or _G.SelectedPlayer.Character.Humanoid.Health < 10 then
+							_G.SelectedPlayer = nil
+							_G.SelectedPlayerName = ""
+							_G.CurrentPlayerDied = true
+							break
+						end
+					end
+				end
+			end
+
+			Teleport(TeleportTable.location)
+		end
+
+		-- local Input = Tab:CreateInput({
+		-- 	Name = "Player Name",
+		-- 	PlaceholderText = "Username",
+		-- 	RemoveTextAfterFocusLost = true,
+		-- 	Callback = function(Text)
+		-- 		SetUsername()
+		-- 			_G.SelectedPlayerName = Text
+		-- 	end,
+		-- })
+
+		-- local ToggleAutoFarmPlayer = Tab:CreateToggle({
+		-- 	Name = "Auto Farm Player",
+		-- 	CurrentValue = false,
+		-- 	Flag = "Toggle1PlayerFarm", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		-- 	Callback = function(Value)
+		-- 		AutoEatPlayer()
+		-- 			_G.AutoFarmPlayer = Value
+		-- 	end,
+		-- })
+		
         function AntiFallDamages()
             game.Players.LocalPlayer.Character.FallDamage:Destroy()
         end
@@ -2998,7 +3159,7 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         		SlientSpeeds()
         	end,
         })
-
-        local Label = Tab:CreateLabel("Soon Players AutoFarm")
+	else
+		Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord (discord.gg/TxJS2Hvvws) The Server Discord Is In You're Clipboard")
 	end
 end
