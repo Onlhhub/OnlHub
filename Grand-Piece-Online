@@ -4,7 +4,11 @@ if not syn and not PROTOSMASHER_LOADED then
 	Player:Kick("You Need Synapse To Execute This Script")
 end
 
-local HWIDTable = loadstring(game:HttpGet("https://pastebin.com/cFTjHAEN"))()
+local HWIDTable = {
+"95C59999-36C2-4157-B11C-BDACFFE271EA",
+"581ABAD5-61B5-4177-A63A-2876C7349EFD",
+}
+
 local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
 
 for _h_, v553 in pairs(HWIDTable) do
