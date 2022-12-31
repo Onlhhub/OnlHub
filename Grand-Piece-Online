@@ -2773,18 +2773,18 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 			game.Players.LocalPlayer.Character.Humanoid.JumpPower = NewValue
 		end
         
-		local SliderWalkSpeed = PlayerTab:CreateSlider({
-			Name = "WalkSpeed",
-			Range = {0, 250},
-			Increment = 1,
-			Suffix = "Speed",
-			CurrentValue = 16,
-			Flag = "Slider1WalkSpeedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-			Callback = function(Value)
-				SpeedChange(Value)
+		--local SliderWalkSpeed = PlayerTab:CreateSlider({
+			--Name = "WalkSpeed",
+			--Range = {0, 250},
+			--Increment = 1,
+			--Suffix = "Speed",
+			--CurrentValue = 16,
+			--Flag = "Slider1WalkSpeedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			--Callback = function(Value)
+				--SpeedChange(Value)
 					--
-			end,
-		})
+			--end,
+		--})
 
 		-- game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
 
