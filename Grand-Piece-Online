@@ -1,8 +1,8 @@
 local Player = game.Players.LocalPlayer
 
-if not syn and not PROTOSMASHER_LOADED then
- Player:Kick("You Need Synapse To Execute This Script")
-end
+-- if not syn and not PROTOSMASHER_LOADED then
+-- 	Player:Kick("You Need Synapse To Execute This Script")
+-- end
 
 local HWIDTable = {
 	"95C59999-36C2-4157-B11C-BDACFFE271EA",
@@ -12,11 +12,6 @@ local HWIDTable = {
 local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
 
 for _h_, v553 in pairs(HWIDTable) do
-	if v553 ~= HWID then
-		Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord Server, The Invite In You're Clipboard")
-		setclipboard("TxJS2Hvvws")
-	end
-
     if v553 == HWID then
 
         print("Success")
@@ -2806,18 +2801,25 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 		-- 	end,
 		-- })
 
-		-- local SliderSpeedy = PlayerTab:CreateSlider({
-		-- 	Name = "Speed",
-		-- 	Range = {0.1, 5},
-		-- 	Increment = 0.1,
-		-- 	Suffix = "Speed",
-		-- 	CurrentValue = 0.1,
-		-- 	Flag = "Slider1Speedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-		-- 	Callback = function(Value)
-		-- 		-- The function that takes place when the slider changes
-		-- 			_G.Speedy = Value
-		-- 	end,
-		-- })
+		local ButtonWalkSpeedBypass = PlayerTab:CreateButton({
+			Name = "WalkSpeed Bypass (LeftShift)",
+			Callback = function()
+				WalkSpeedBypas1()
+			end,
+		})
+
+		local SliderSpeedy = PlayerTab:CreateSlider({
+			Name = "Speed",
+			Range = {0, 5},
+			Increment = 0.1,
+			Suffix = "Speed",
+			CurrentValue = 0.1,
+			Flag = "Slider1Speedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+				-- The function that takes place when the slider changes
+					--
+			end,
+		})
 
         function ShiftLockS()
             Player.PlayerScripts.PlayerModule.CameraModule.MouseLockController.BoundKeys.Value = "LeftAlt"
@@ -2986,12 +2988,20 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
             Fly()
         end
 
-        -- local Shi = PlayerTab:CreateButton({
-        --     Name = "Set ShiftLock To (LeftAlt)",
-        --     Callback = function()
-        --         ShiftLockS()
-        --     end,
-        -- })
+        local Shi = PlayerTab:CreateButton({
+            Name = "Set ShiftLock To (LeftAlt)",
+            Callback = function()
+                ShiftLockS("LeftAlt")
+            end,
+        })
+
+		
+        local Shift = PlayerTab:CreateButton({
+            Name = "Set ShiftLock To (LeftShift)",
+            Callback = function()
+                ShiftLockS("LeftShift")
+            end,
+        })
 
 		local FlyButton = PlayerTab:CreateButton({
             Name = "Fly (G)",
