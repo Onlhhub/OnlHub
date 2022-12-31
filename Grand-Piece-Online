@@ -16,6 +16,34 @@ for _h_, v553 in pairs(HWIDTable) do
 
         print("Success")
 
+		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+        local Window = Rayfield:CreateWindow({
+            Name = "Onl Hub",
+            LoadingTitle = "Onl Hub",
+            LoadingSubtitle = "Onl Hub",
+            ConfigurationSaving = {
+                Enabled = true,
+                FolderName = nil, -- Create a custom folder for your hub/game
+                FileName = "Big Hub"
+            },
+                Discord = {
+                    Enabled = true,
+                    Invite = "TxJS2Hvvws", -- The Discord invite code, do not include discord.gg/
+                    RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+                },
+            KeySystem = false, -- Set this to true to use our key system
+            KeySettings = {
+                Title = "Onl Hub",
+                Subtitle = "Key System, Please Enter You're Client Id By Pressing Ctrl + V",
+                Note = "Join the discord (discord.gg/TxJS2Hvvws)",
+                FileName = "Onl Hub Key",
+                SaveKey = false,
+                GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get
+                Key = v553
+            }
+        })
+
 		if game:GetService("ReplicatedStorage"):FindFirstChild("getPlayerPosition") then
 			game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
 		end
@@ -53,34 +81,6 @@ for _h_, v553 in pairs(HWIDTable) do
 				},
 			})
 		 end
-
-		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
-
-        local Window = Rayfield:CreateWindow({
-            Name = "Onl Hub",
-            LoadingTitle = "Onl Hub",
-            LoadingSubtitle = "Onl Hub",
-            ConfigurationSaving = {
-                Enabled = true,
-                FolderName = nil, -- Create a custom folder for your hub/game
-                FileName = "Big Hub"
-            },
-                Discord = {
-                    Enabled = true,
-                    Invite = "TxJS2Hvvws", -- The Discord invite code, do not include discord.gg/
-                    RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-                },
-            KeySystem = false, -- Set this to true to use our key system
-            KeySettings = {
-                Title = "Onl Hub",
-                Subtitle = "Key System, Please Enter You're Client Id By Pressing Ctrl + V",
-                Note = "Join the discord (discord.gg/TxJS2Hvvws)",
-                FileName = "Onl Hub Key",
-                SaveKey = false,
-                GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get
-                Key = v553
-            }
-        })
         
         -- Varibales
         
