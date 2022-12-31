@@ -152,28 +152,11 @@ for _h_, v553 in pairs(HWIDTable) do
             end
         end
         
-        function WalkSpeedBypas()
-            local UIS = game:GetService'UserInputService';
-            UIS.InputBegan:connect(function(UserInput)
-                    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.W or Enum.KeyCode.S or Enum.KeyCode.D or Enum.KeyCode.A then
-                        _G.Running = true
-                            while wait() and _G.Running == true do
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.CharacterHumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 1.3
-            end
-                    end
-            end)
-            UIS.InputEnded:connect(function(UserInput)
-                    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.W or Enum.KeyCode.S or Enum.KeyCode.D or Enum.KeyCode.A then
-                            _G.Running = false
-                    end
-            end)
-        end
-        
         function WalkSpeedBypas1()
 
             local UIS = game:GetService'UserInputService';
             UIS.InputBegan:connect(function(UserInput, gpe)
-                    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.LeftShift then
+                    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.RightAlt then
                         _G.Running = true
                             while wait() and _G.Running == true do
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * _G.Speedy
@@ -181,7 +164,7 @@ for _h_, v553 in pairs(HWIDTable) do
                     end
             end)
             UIS.InputEnded:connect(function(UserInput)
-                    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.LeftShift then
+                    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.RightAlt then
                             _G.Running = false
                     end
             end)
