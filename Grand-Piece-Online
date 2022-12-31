@@ -6,7 +6,7 @@ end
 
 local HWIDTable = {
 	"95C59999-36C2-4157-B11C-BDACFFE271EA",
-	"581ABAD5-61B5-4177-A63A-2876C7349EFD",
+	"581ABAD5-61B5-4177-A63A-2876C7349EFD"
 }
 
 local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
@@ -17,17 +17,44 @@ for _h_, v553 in pairs(HWIDTable) do
         print("Success")
 
 		if game:GetService("ReplicatedStorage"):FindFirstChild("getPlayerPosition") then
-		   game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
-		end
-		
-		
-		if game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill") then
-		   game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill"):Destroy()
+			game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
 		end
 
+		if game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill") then
+			game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill"):Destroy()
+			
+			Rayfield:Notify({
+				Title = "System",
+				Content = "Anti Cheat Has Been Disabled, But Some Anti Cheats Are Not ! Take Care Buddy.",
+				Duration = 6.5,
+				Image = 4483362458,
+				Actions = { -- Notification Buttons
+					Ignore = {
+						Name = "Okay!",
+						Callback = function()
+							print("The user tapped Okay!")
+						end
+					},
+				},
+			})
+		else
+			Rayfield:Notify({
+				Title = "System",
+				Content = "Can't  Find Anti Cheat - Don't Use WalkSpeed !!!!!!!!!!!",
+				Duration = 6.5,
+				Image = 4483362458,
+				Actions = { -- Notification Buttons
+					Ignore = {
+						Name = "Okay!",
+						Callback = function()
+							print("The user tapped Okay!")
+						end
+					},
+				},
+			})
+		 end
+
 		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
-    
-        setclipboard(HWID)
 
         local Window = Rayfield:CreateWindow({
             Name = "Onl Hub",
@@ -43,7 +70,7 @@ for _h_, v553 in pairs(HWIDTable) do
                     Invite = "TxJS2Hvvws", -- The Discord invite code, do not include discord.gg/
                     RememberJoins = true -- Set this to false to make them join the discord every time they load it up
                 },
-            KeySystem = true, -- Set this to true to use our key system
+            KeySystem = false, -- Set this to true to use our key system
             KeySettings = {
                 Title = "Onl Hub",
                 Subtitle = "Key System, Please Enter You're Client Id By Pressing Ctrl + V",
@@ -83,7 +110,7 @@ for _h_, v553 in pairs(HWIDTable) do
         
         _G.Jump = false
 
-		_G.AutoFarmPlayer = false
+		_G.AutoFarmPlayer = true
 
 		_G.SelectedPlayer = nil
 
@@ -3007,92 +3034,116 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 			end
 		end
 
-		function AutoEatPlayer()
-			local ff = nil
+		function AutoEatPlayer(vlll)
+			if vlll == "true" then
+				local ff = nil
 
-			if _G.SelectedPlayer.Character.HumanoidRootPart then
-				ff = _G.SelectedPlayer.Character.HumanoidRootPart
-			end
-
-			local TeleportTable = {
-				location = ff.Position
-			}
-			
-			local ts = game:GetService("TweenService")
-			
-			local Tween = TweenInfo.new(0.25, Enum.EasingStyle.Linear)
-			
-			function Teleport(v1)
-				if Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
-					while _G.AutoFarmPlayer == true do
-
-						if _G.SelectedPlayer == nil or _G.AutoFarmPlayer == false then
-							_G.SelectedPlayerName = ""
-							_G.CurrentPlayerDied = false
-							break
-						end
-
-						if _G.CurrentPlayerDied == true or _G.AutoFarmPlayer == false then
-							_G.SelectedPlayer = nil
-							_G.SelectedPlayerName = ""
-							_G.CurrentPlayerDied = false
-							break
-						end
-
-						wait()
-
-						if _G.SelectedPlayer ~= nil and _G.CurrentPlayerDied == false then
-
-							if _G.SelectedPlayer == nil then
-								_G.SelectedPlayerName = ""
-								_G.CurrentPlayerDied = false
-								
-		
-								Rayfield:Notify({
-									Title = "System",
-									Content = "Player is nil or player has been left the game .",
-									Duration = 6.5,
-									Image = 4483362458,
-									Actions = { -- Notification Buttons
-										Ignore = {
-											Name = "Okay!",
-											Callback = function()
-												print("Clicked Up")
-											end
-										},
+				for __vs, vP in pairs(game.Players:GetPlayers()) do
+					if vP ~= game.Players.LocalPlayer then
+						if (Player.Character:FindFirstChild("HumanoidRootPart").Position - vP.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 125 then
+							_G.SelectedPlayer = vP
+						else
+							Rayfield:Notify({
+								Title = "System",
+								Content = "There is no near player please try again .",
+								Duration = 6.5,
+								Image = 4483362458,
+								Actions = { -- Notification Buttons
+									Ignore = {
+										Name = "Okay!",
+										Callback = function()
+											print("Clicked Up")
+										end
 									},
-								})
-								
-								break
-							end
-						end
-
-						local cf = CFrame.new(v1) * CFrame.new(0,0,-3)
-						local tg = nil
-						
-						if _G.AutoFarmPlayer == true or _G.SelectedPlayer ~= nil then
-							tg = ts:Create(Player.Character.HumanoidRootPart, Tween, {CFrame = cf})
-							tg:Play()
-						elseif _G.AutoFarmPlayer == false or _G.SelectedPlayer == nil then
-							tg = ts:Create(Player.Character.HumanoidRootPart, Tween, {CFrame = Player.Character.HumanoidRootPart.CFrame})
-							tg:Play()
-							tg:Pause()
-							tg = nil
-							_G.CurrentPlayerDied = false
-							break
-						end
-
-						if _G.SelectedPlayer.Character ~= nil and _G.SelectedPlayer.Character.Humanoid.Health == 0 or _G.SelectedPlayer.Character.Humanoid.Health < 10 then
-							_G.SelectedPlayer = nil
-							_G.SelectedPlayerName = ""
-							_G.CurrentPlayerDied = true
-							break
+								},
+							})
 						end
 					end
 				end
-			end
 
-			Teleport(TeleportTable.location)
+				if _G.SelectedPlayer.Character and _G.SelectedPlayer.Character.HumanoidRootPart then
+					ff = _G.SelectedPlayer.Character.HumanoidRootPart
+				end
+	
+				local TeleportTable = {
+					location = ff.Position
+				}
+				
+				local ts = game:GetService("TweenService")
+				
+				local Tween = TweenInfo.new(0.4, Enum.EasingStyle.Linear)
+				
+				function Teleport(v1)
+					if Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
+						while _G.AutoFarmPlayer == true do
+	
+							wait()
+	
+							if _G.SelectedPlayer == nil then
+								
+								-- Rayfield:Notify({
+								-- 	Title = "System",
+								-- 	Content = "Player is nil or player has been left the game .",
+								-- 	Duration = 6.5,
+								-- 	Image = 4483362458,
+								-- 	Actions = { -- Notification Buttons
+								-- 		Ignore = {
+								-- 			Name = "Okay!",
+								-- 			Callback = function()
+								-- 				print("Clicked Up")
+								-- 			end
+								-- 		},
+								-- 	},
+								-- })
+	
+	
+								_G.CurrentPlayerDied = false
+								_G.AutoFarmPlayer = false
+							end
+	
+							if _G.CurrentPlayerDied == true or _G.AutoFarmPlayer == false then
+								_G.SelectedPlayer = nil
+								_G.SelectedPlayerName = ""
+								_G.CurrentPlayerDied = false
+							end
+	
+							local cf = CFrame.new(v1)
+							local tg = ts:Create(Player.Character.HumanoidRootPart, Tween, {CFrame = cf})
+							
+						if _G.AutoFarmPlayer == true and _G.SelectedPlayer ~= nil then
+							tg:Play()
+						end
+	
+							if _G.SelectedPlayer.Character ~= nil and _G.SelectedPlayer.Character.Humanoid.Health == 0 or _G.SelectedPlayer.Character.Humanoid.Health < 10 then
+								_G.AutoFarmPlayer = false
+								_G.SelectedPlayer = nil
+								_G.CurrentPlayerDied = false
+							end
+						end
+					end
+				end
+	
+				Teleport(TeleportTable.location)
+			else
+				_G.AutoFarmPlayer = false
+				_G.SelectedPlayer = nil
+				_G.CurrentPlayerDied = false
+
+				Rayfield:Notify({
+					Title = "System",
+					Content = "Auto Farm Player Is Disabled Successflly !",
+					Duration = 6.5,
+					Image = 4483362458,
+					Actions = { -- Notification Buttons
+						Ignore = {
+							Name = "Thank You !",
+							Callback = function()
+								print("Clicked Up")
+							end
+						},
+					},
+				})
+			end
 		end
 
 		-- local Input = Tab:CreateInput({
@@ -3107,13 +3158,22 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 
 		-- local ToggleAutoFarmPlayer = Tab:CreateToggle({
 		-- 	Name = "Auto Farm Player",
-		-- 	CurrentValue = false,
+		-- 	CurrentValue = true,
 		-- 	Flag = "Toggle1PlayerFarm", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 		-- 	Callback = function(Value)
-		-- 		AutoEatPlayer()
+		-- 		AutoEatPlayer("true")
 		-- 			_G.AutoFarmPlayer = Value
 		-- 	end,
 		-- })
+
+		-- local ButtonDisable = Tab:CreateButton({
+        -- 	Name = "Disable AutoFarm Player",
+        -- 	Callback = function()
+        -- 		AutoEatPlayer("false")
+        -- 	end,
+        -- })
+
+		ToggleAutoFarmPlayer:Set(false)
 		
         function AntiFallDamages()
             game.Players.LocalPlayer.Character.FallDamage:Destroy()
@@ -3142,6 +3202,7 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         function SlientSpeeds()
             while true do
                 wait()
+
                 local uis = game:GetService("UserInputService")
 
                 uis.InputBegan:Connect(function(input, gameProcessedEvent)
@@ -3150,7 +3211,7 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
                     end
 
                     if input.KeyCode == Enum.KeyCode.F then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 1
+						game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = 25
                     end
                 end)
 
@@ -3158,13 +3219,14 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
             end
         end
 
-        local ButtonSlient = Tab:CreateButton({
-        	Name = "Silent Speed - Beta Version",
-        	Callback = function()
-        		SlientSpeeds()
-        	end,
-        })
+        -- local ButtonSlient = Tab:CreateButton({
+        -- 	Name = "Silent Speed - Beta Version",
+        -- 	Callback = function()
+        -- 		SlientSpeeds()
+        -- 	end,
+        -- })
 	else
-		Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord (discord.gg/TxJS2Hvvws) The Server Discord Is In You're Clipboard")
+		Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord Server, The Invite In You're Clipboard")
+		setclipboard("TxJS2Hvvws")
 	end
 end
