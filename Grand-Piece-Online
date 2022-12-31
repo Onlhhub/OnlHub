@@ -3258,4 +3258,3 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 	-- 	setclipboard("TxJS2Hvvws")
 	end
 end
-v
