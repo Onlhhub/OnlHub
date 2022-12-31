@@ -1,22 +1,27 @@
 local Player = game.Players.LocalPlayer
 
-if not syn and not PROTOSMASHER_LOADED then
-	Player:Kick("You Need Synapse To Execute This Script")
-end
+-- if not syn and not PROTOSMASHER_LOADED then
+-- 	Player:Kick("You Need Synapse To Execute This Script")
+-- end
 
 local HWIDTable = {
 	"95C59999-36C2-4157-B11C-BDACFFE271EA",
-	"581ABAD5-61B5-4177-A63A-2876C7349EFD"
+	"581ABAD5-61B5-4177-A63A-2876C7349EFD",
 }
 
 local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
 
 for _h_, v553 in pairs(HWIDTable) do
+	if v553 ~= HWID then
+		Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord Server, The Invite In You're Clipboard")
+		setclipboard("TxJS2Hvvws")
+	end
+
     if v553 == HWID then
 
         print("Success")
 
-	local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 
         local Window = Rayfield:CreateWindow({
             Name = "Onl Hub",
@@ -48,7 +53,7 @@ for _h_, v553 in pairs(HWIDTable) do
 			game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
 		end
 
-						-- if game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill") then
+		-- if game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill") then
 		-- 	local sus = game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill"):Clone()
 		-- 	game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill"):Destroy()
 		-- 	sus.Parent = game:GetService("ReplicatedStorage").Events
@@ -2773,18 +2778,18 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 			game.Players.LocalPlayer.Character.Humanoid.JumpPower = NewValue
 		end
         
-		--local SliderWalkSpeed = PlayerTab:CreateSlider({
-			--Name = "WalkSpeed",
-			--Range = {0, 250},
-			--Increment = 1,
-			--Suffix = "Speed",
-			--CurrentValue = 16,
-			--Flag = "Slider1WalkSpeedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-			--Callback = function(Value)
-				--SpeedChange(Value)
-					--
-			--end,
-		--})
+		-- local SliderWalkSpeed = PlayerTab:CreateSlider({
+		-- 	Name = "WalkSpeed",
+		-- 	Range = {0, 250},
+		-- 	Increment = 1,
+		-- 	Suffix = "Speed",
+		-- 	CurrentValue = 16,
+		-- 	Flag = "Slider1WalkSpeedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		-- 	Callback = function(Value)
+		-- 		SpeedChange(Value)
+		-- 			--
+		-- 	end,
+		-- })
 
 		-- game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
 
@@ -2981,12 +2986,12 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
             Fly()
         end
 
-        local Shi = PlayerTab:CreateButton({
-            Name = "Set ShiftLock To (LeftAlt)",
-            Callback = function()
-                ShiftLockS()
-            end,
-        })
+        -- local Shi = PlayerTab:CreateButton({
+        --     Name = "Set ShiftLock To (LeftAlt)",
+        --     Callback = function()
+        --         ShiftLockS()
+        --     end,
+        -- })
 
 		local FlyButton = PlayerTab:CreateButton({
             Name = "Fly (G)",
@@ -3255,8 +3260,5 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         -- 		SlientSpeeds()
         -- 	end,
         -- })
-	-- else
-	-- 	Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord Server, The Invite In You're Clipboard")
-	-- 	setclipboard("TxJS2Hvvws")
 	end
 end
