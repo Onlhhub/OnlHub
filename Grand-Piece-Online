@@ -2988,163 +2988,163 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
             end,
         })
 
-		function SetUsername()
-			local x = game.Players:FindFirstChild(_G.SelectedPlayerName)
+		-- function SetUsername()
+		-- 	local x = game.Players:FindFirstChild(_G.SelectedPlayerName)
 
-			if _G.SelectedPlayer ~= nil and _G.SelectedPlayerName ~= _G.SelectedPlayer.Name then
-				Rayfield:Notify({
-					Title = "System",
-					Content = "This Player Is Already Selected !",
-					Duration = 6.5,
-					Image = 4483362458,
-					Actions = { -- Notification Buttons
-						Ignore = {
-							Name = "Okay!",
-							Callback = function()
-								print("Clicked Up")
-							end
-						},
-					},
-				})
-			end
+		-- 	if _G.SelectedPlayer ~= nil and _G.SelectedPlayerName ~= _G.SelectedPlayer.Name then
+		-- 		Rayfield:Notify({
+		-- 			Title = "System",
+		-- 			Content = "This Player Is Already Selected !",
+		-- 			Duration = 6.5,
+		-- 			Image = 4483362458,
+		-- 			Actions = { -- Notification Buttons
+		-- 				Ignore = {
+		-- 					Name = "Okay!",
+		-- 					Callback = function()
+		-- 						print("Clicked Up")
+		-- 					end
+		-- 				},
+		-- 			},
+		-- 		})
+		-- 	end
 
-			if x then
-				_G.SelectedPlayer = x
+		-- 	if x then
+		-- 		_G.SelectedPlayer = x
 
-				_G.SelectedPlayerName = ""
+		-- 		_G.SelectedPlayerName = ""
 
-				print(_G.SelectedPlayer.Name)
-			else
-				_G.SelectedPlayer = nil
+		-- 		print(_G.SelectedPlayer.Name)
+		-- 	else
+		-- 		_G.SelectedPlayer = nil
 
-				Rayfield:Notify({
-					Title = "System",
-					Content = "We Can't Find Player, Please Try Again",
-					Duration = 6.5,
-					Image = 4483362458,
-					Actions = { -- Notification Buttons
-						Ignore = {
-							Name = "Okay!",
-							Callback = function()
-								print("Clicked Up")
-							end
-						},
-					},
-				})
-			end
-		end
+		-- 		Rayfield:Notify({
+		-- 			Title = "System",
+		-- 			Content = "We Can't Find Player, Please Try Again",
+		-- 			Duration = 6.5,
+		-- 			Image = 4483362458,
+		-- 			Actions = { -- Notification Buttons
+		-- 				Ignore = {
+		-- 					Name = "Okay!",
+		-- 					Callback = function()
+		-- 						print("Clicked Up")
+		-- 					end
+		-- 				},
+		-- 			},
+		-- 		})
+		-- 	end
+		-- end
 
-		function AutoEatPlayer(vlll)
-			if vlll == "true" then
-				local ff = nil
+		-- function AutoEatPlayer(vlll)
+		-- 	if vlll == "true" then
+		-- 		local ff = nil
 
-				for __vs, vP in pairs(game.Players:GetPlayers()) do
-					if vP ~= game.Players.LocalPlayer then
-						if (Player.Character:FindFirstChild("HumanoidRootPart").Position - vP.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 125 then
-							_G.SelectedPlayer = vP
-						else
-							Rayfield:Notify({
-								Title = "System",
-								Content = "There is no near player please try again .",
-								Duration = 6.5,
-								Image = 4483362458,
-								Actions = { -- Notification Buttons
-									Ignore = {
-										Name = "Okay!",
-										Callback = function()
-											print("Clicked Up")
-										end
-									},
-								},
-							})
-						end
-					end
-				end
+		-- 		for __vs, vP in pairs(game.Players:GetPlayers()) do
+		-- 			if vP ~= game.Players.LocalPlayer then
+		-- 				if (Player.Character:FindFirstChild("HumanoidRootPart").Position - vP.Character:FindFirstChild("HumanoidRootPart").Position).Magnitude < 125 then
+		-- 					_G.SelectedPlayer = vP
+		-- 				else
+		-- 					Rayfield:Notify({
+		-- 						Title = "System",
+		-- 						Content = "There is no near player please try again .",
+		-- 						Duration = 6.5,
+		-- 						Image = 4483362458,
+		-- 						Actions = { -- Notification Buttons
+		-- 							Ignore = {
+		-- 								Name = "Okay!",
+		-- 								Callback = function()
+		-- 									print("Clicked Up")
+		-- 								end
+		-- 							},
+		-- 						},
+		-- 					})
+		-- 				end
+		-- 			end
+		-- 		end
 
-				if _G.SelectedPlayer.Character and _G.SelectedPlayer.Character.HumanoidRootPart then
-					ff = _G.SelectedPlayer.Character.HumanoidRootPart
-				end
+		-- 		if _G.SelectedPlayer.Character and _G.SelectedPlayer.Character.HumanoidRootPart then
+		-- 			ff = _G.SelectedPlayer.Character.HumanoidRootPart
+		-- 		end
 	
-				local TeleportTable = {
-					location = ff.Position
-				}
+		-- 		local TeleportTable = {
+		-- 			location = ff.Position
+		-- 		}
 				
-				local ts = game:GetService("TweenService")
+		-- 		local ts = game:GetService("TweenService")
 				
-				local Tween = TweenInfo.new(0.4, Enum.EasingStyle.Linear)
+		-- 		local Tween = TweenInfo.new(0.4, Enum.EasingStyle.Linear)
 				
-				function Teleport(v1)
-					if Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
-						while _G.AutoFarmPlayer == true do
+		-- 		function Teleport(v1)
+		-- 			if Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
+		-- 				while _G.AutoFarmPlayer == true do
 	
-							wait()
+		-- 					wait()
 	
-							if _G.SelectedPlayer == nil then
+		-- 					if _G.SelectedPlayer == nil then
 								
-								-- Rayfield:Notify({
-								-- 	Title = "System",
-								-- 	Content = "Player is nil or player has been left the game .",
-								-- 	Duration = 6.5,
-								-- 	Image = 4483362458,
-								-- 	Actions = { -- Notification Buttons
-								-- 		Ignore = {
-								-- 			Name = "Okay!",
-								-- 			Callback = function()
-								-- 				print("Clicked Up")
-								-- 			end
-								-- 		},
-								-- 	},
-								-- })
+		-- 						-- Rayfield:Notify({
+		-- 						-- 	Title = "System",
+		-- 						-- 	Content = "Player is nil or player has been left the game .",
+		-- 						-- 	Duration = 6.5,
+		-- 						-- 	Image = 4483362458,
+		-- 						-- 	Actions = { -- Notification Buttons
+		-- 						-- 		Ignore = {
+		-- 						-- 			Name = "Okay!",
+		-- 						-- 			Callback = function()
+		-- 						-- 				print("Clicked Up")
+		-- 						-- 			end
+		-- 						-- 		},
+		-- 						-- 	},
+		-- 						-- })
 	
 	
-								_G.CurrentPlayerDied = false
-								_G.AutoFarmPlayer = false
-							end
+		-- 						_G.CurrentPlayerDied = false
+		-- 						_G.AutoFarmPlayer = false
+		-- 					end
 	
-							if _G.CurrentPlayerDied == true or _G.AutoFarmPlayer == false then
-								_G.SelectedPlayer = nil
-								_G.SelectedPlayerName = ""
-								_G.CurrentPlayerDied = false
-							end
+		-- 					if _G.CurrentPlayerDied == true or _G.AutoFarmPlayer == false then
+		-- 						_G.SelectedPlayer = nil
+		-- 						_G.SelectedPlayerName = ""
+		-- 						_G.CurrentPlayerDied = false
+		-- 					end
 	
-							local cf = CFrame.new(v1)
-							local tg = ts:Create(Player.Character.HumanoidRootPart, Tween, {CFrame = cf})
+		-- 					local cf = CFrame.new(v1)
+		-- 					local tg = ts:Create(Player.Character.HumanoidRootPart, Tween, {CFrame = cf})
 							
-						if _G.AutoFarmPlayer == true and _G.SelectedPlayer ~= nil then
-							tg:Play()
-						end
+		-- 				if _G.AutoFarmPlayer == true and _G.SelectedPlayer ~= nil then
+		-- 					tg:Play()
+		-- 				end
 	
-							if _G.SelectedPlayer.Character ~= nil and _G.SelectedPlayer.Character.Humanoid.Health == 0 or _G.SelectedPlayer.Character.Humanoid.Health < 10 then
-								_G.AutoFarmPlayer = false
-								_G.SelectedPlayer = nil
-								_G.CurrentPlayerDied = false
-							end
-						end
-					end
-				end
+		-- 					if _G.SelectedPlayer.Character ~= nil and _G.SelectedPlayer.Character.Humanoid.Health == 0 or _G.SelectedPlayer.Character.Humanoid.Health < 10 then
+		-- 						_G.AutoFarmPlayer = false
+		-- 						_G.SelectedPlayer = nil
+		-- 						_G.CurrentPlayerDied = false
+		-- 					end
+		-- 				end
+		-- 			end
+		-- 		end
 	
-				Teleport(TeleportTable.location)
-			else
-				_G.AutoFarmPlayer = false
-				_G.SelectedPlayer = nil
-				_G.CurrentPlayerDied = false
+		-- 		Teleport(TeleportTable.location)
+		-- 	else
+		-- 		_G.AutoFarmPlayer = false
+		-- 		_G.SelectedPlayer = nil
+		-- 		_G.CurrentPlayerDied = false
 
-				Rayfield:Notify({
-					Title = "System",
-					Content = "Auto Farm Player Is Disabled Successflly !",
-					Duration = 6.5,
-					Image = 4483362458,
-					Actions = { -- Notification Buttons
-						Ignore = {
-							Name = "Thank You !",
-							Callback = function()
-								print("Clicked Up")
-							end
-						},
-					},
-				})
-			end
-		end
+		-- 		Rayfield:Notify({
+		-- 			Title = "System",
+		-- 			Content = "Auto Farm Player Is Disabled Successflly !",
+		-- 			Duration = 6.5,
+		-- 			Image = 4483362458,
+		-- 			Actions = { -- Notification Buttons
+		-- 				Ignore = {
+		-- 					Name = "Thank You !",
+		-- 					Callback = function()
+		-- 						print("Clicked Up")
+		-- 					end
+		-- 				},
+		-- 			},
+		-- 		})
+		-- 	end
+		-- end
 
 		-- local Input = Tab:CreateInput({
 		-- 	Name = "Player Name",
@@ -3172,8 +3172,6 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         -- 		AutoEatPlayer("false")
         -- 	end,
         -- })
-
-		ToggleAutoFarmPlayer:Set(false)
 		
         function AntiFallDamages()
             game.Players.LocalPlayer.Character.FallDamage:Destroy()
