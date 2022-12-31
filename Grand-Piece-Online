@@ -48,39 +48,39 @@ for _h_, v553 in pairs(HWIDTable) do
 			game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
 		end
 
-		if game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill") then
-			game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill"):Destroy()
+		-- if game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill") then
+		-- 	game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill"):Destroy()
 			
-			Rayfield:Notify({
-				Title = "System",
-				Content = "Anti Cheat Has Been Disabled, But Some Anti Cheats Are Not ! Take Care Buddy.",
-				Duration = 6.5,
-				Image = 4483362458,
-				Actions = { -- Notification Buttons
-					Ignore = {
-						Name = "Okay!",
-						Callback = function()
-							print("The user tapped Okay!")
-						end
-					},
-				},
-			})
-		else
-			Rayfield:Notify({
-				Title = "System",
-				Content = "Can't  Find Anti Cheat - Don't Use WalkSpeed !!!!!!!!!!!",
-				Duration = 6.5,
-				Image = 4483362458,
-				Actions = { -- Notification Buttons
-					Ignore = {
-						Name = "Okay!",
-						Callback = function()
-							print("The user tapped Okay!")
-						end
-					},
-				},
-			})
-		 end
+		-- 	Rayfield:Notify({
+		-- 		Title = "System",
+		-- 		Content = "Anti Cheat Has Been Disabled, But Some Anti Cheats Are Not ! Take Care Buddy.",
+		-- 		Duration = 6.5,
+		-- 		Image = 4483362458,
+		-- 		Actions = { -- Notification Buttons
+		-- 			Ignore = {
+		-- 				Name = "Okay!",
+		-- 				Callback = function()
+		-- 					print("The user tapped Okay!")
+		-- 				end
+		-- 			},
+		-- 		},
+		-- 	})
+		-- else
+		-- 	Rayfield:Notify({
+		-- 		Title = "System",
+		-- 		Content = "Can't  Find Anti Cheat - Don't Use WalkSpeed !!!!!!!!!!!",
+		-- 		Duration = 6.5,
+		-- 		Image = 4483362458,
+		-- 		Actions = { -- Notification Buttons
+		-- 			Ignore = {
+		-- 				Name = "Okay!",
+		-- 				Callback = function()
+		-- 					print("The user tapped Okay!")
+		-- 				end
+		-- 			},
+		-- 		},
+		-- 	})
+		--  end
         
         -- Varibales
         
