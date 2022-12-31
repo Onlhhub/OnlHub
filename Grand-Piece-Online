@@ -17,7 +17,12 @@ for _h_, v553 in pairs(HWIDTable) do
         print("Success")
 
 		if game:GetService("ReplicatedStorage"):FindFirstChild("getPlayerPosition") then
-			game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
+		   game:GetService("ReplicatedStorage").getPlayerPosition:Destroy()
+		end
+		
+		
+		if game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill") then
+		   game:GetService("ReplicatedStorage").Events:FindFirstChild("Skill"):Destroy()
 		end
 
 		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
