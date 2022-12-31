@@ -104,7 +104,7 @@ for _h_, v553 in pairs(HWIDTable) do
 
         _G.Speed = false
 
-		_G.Speedy = 0.5
+		_G.Speedy = 16
 
         _G.NoSpeed = false
         
@@ -2761,26 +2761,56 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
                     HitboxVis = Value
             end,
         })
-        
-        local ButtonWalkSpeed = PlayerTab:CreateButton({
-            Name = "WalkSpeed Bypass (LeftShift)",
-            Callback = function()
-                WalkSpeedBypas1()
-            end,
-        })
 
-		local SliderSpeedy = PlayerTab:CreateSlider({
-			Name = "Speed",
-			Range = {0.1, 5},
-			Increment = 0.1,
+
+		function SpeedChange(NewValue)
+			game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = NewValue
+		end
+
+		function JumpChange(NewValue)
+			game.Players.LocalPlayer.Character.Humanoid.JumpPower = NewValue
+		end
+        
+		local SliderWalkSpeed = PlayerTab:CreateSlider({
+			Name = "WalkSpeed",
+			Range = {0, 250},
+			Increment = 1,
 			Suffix = "Speed",
-			CurrentValue = 0.1,
-			Flag = "Slider1Speedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			CurrentValue = 16,
+			Flag = "Slider1WalkSpeedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 			Callback = function(Value)
-				-- The function that takes place when the slider changes
-					_G.Speedy = Value
+				SpeedChange(Value)
+					--
 			end,
 		})
+
+		-- game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
+
+		-- local SliderJumpPowers = PlayerTab:CreateSlider({
+		-- 	Name = "JumpPower",
+		-- 	Range = {0, 200},
+		-- 	Increment = 1,
+		-- 	Suffix = "Power",
+		-- 	CurrentValue = 50,
+		-- 	Flag = "Slider1WalkSpeedddy2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		-- 	Callback = function(Value)
+		-- 		JumpChange(Value)
+		-- 			--
+		-- 	end,
+		-- })
+
+		-- local SliderSpeedy = PlayerTab:CreateSlider({
+		-- 	Name = "Speed",
+		-- 	Range = {0.1, 5},
+		-- 	Increment = 0.1,
+		-- 	Suffix = "Speed",
+		-- 	CurrentValue = 0.1,
+		-- 	Flag = "Slider1Speedddy", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+		-- 	Callback = function(Value)
+		-- 		-- The function that takes place when the slider changes
+		-- 			_G.Speedy = Value
+		-- 	end,
+		-- })
 
         function ShiftLockS()
             Player.PlayerScripts.PlayerModule.CameraModule.MouseLockController.BoundKeys.Value = "LeftAlt"
@@ -3223,8 +3253,9 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
         -- 		SlientSpeeds()
         -- 	end,
         -- })
-	else
-		Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord Server, The Invite In You're Clipboard")
-		setclipboard("TxJS2Hvvws")
+	-- else
+	-- 	Player:Kick("You're Not In The WhiteList Go Buy The Script From Our Discord Server, The Invite In You're Clipboard")
+	-- 	setclipboard("TxJS2Hvvws")
 	end
 end
+v
