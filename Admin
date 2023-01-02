@@ -44,7 +44,7 @@ end
         -- Funcions
         
         function HitboxSize()
-            for i, Players in pairs(game.Players:GetChildren()) do
+            for i, Players in pairs(game.Players:GetPlayers()) do
                 if Players.Name ~= Player.Name then
                     if Players.Character:FindFirstChild("HumanoidRootPart") then
                         Players.Character.HumanoidRootPart.Size = Vector3.new(Hitbox,Hitbox,Hitbox)
@@ -58,7 +58,7 @@ end
         end
         
         function HitboxTrans()
-            for i, Players in pairs(game.Players:GetChildren()) do
+            for i, Players in pairs(game.Players:GetPlayers()) do
                 if Players.Name ~= Player.Name then
                     if Players.Character:FindFirstChild("HumanoidRootPart") then
                         Players.Character.HumanoidRootPart.Transparency = HitboxVis
